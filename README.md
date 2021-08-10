@@ -30,6 +30,21 @@ Ajuste o fluxo do App para que ele entre na primeira lista de cliente, então, a
 
 Para isso, ajuste o arquivo de manifesto do Android para que a lista de alunos seja um launcher. Então, incorporar um listener no fab para que inicie um FormularioClienteActivity Em seguida, migrei o código que configura o adaptador no ListView e deixei no onResume () para evitar o problema de não apresentar os clientes salvos. 
 
-Em seguida, na FormularioClienteActivity, ao deixar de inicializar a ListaClienteActivity ao salvar o cliente, finalizar uma Activity a partir do método finish (). 
+Em seguida, na FormularioClienteActivity, ao deixar de inicializar a ListaClienteActivity ao salvar o cliente, finalizar uma Activity a partir do método finish ().
 
+Implemente o listener para cada item do ListView, utilizando para isso o método setOnItemClickListener() que recebe a interface AdapterView.OnItemClickListener como argumento. Faça essa implementação por meio de uma classe anônima.
+Primeiro busque o cliente na lista devolvida pelo DAO dentro do onItemClick(). Para isso, utilize o parâmetro de posição.
+
+Para enviar o aluno, utilize o extra da Intent por meio do método putExtra(). Lembre-se que é necessário enviar a chave como uma String e o cliente como valor.
+
+A técnica de transferência via extra, exige que o dado seja serializável. Sendo assim, faça com o que a classe Cliente implemente a interface Serializable.
+
+Na Activity de formulário, dentro do o onCreate() pegue a Intent com o método getIntent(), em seguida, recupere o aluno que foi enviado por meio do método getSerializableExtra() enviando a mesma chave utilizada no putExtra(). Lembre-se que é retornada a interface Serializable, ou seja, vai ser necessário fazer o casting para Cliente.
+Sendo assim, modifique a classe Cliente para que tenha um id, utilize o tipo int para o id. Altere o DAO para que gere um id novo para cada cliente que for salvo.
+Crie o método edita() que recebe um cliente. Nesta implementação, primeiro implemente o código que busca um cliente a partir do seu id. Essa busca pode ou não encontrar um cliente, portanto, antes de editar certifique-se que o cliente não é uma referência nula.
+
+Para a edição, busque a posição do cliente que foi encontrado, então utilize o método set() da lista de cliente, enviando a posição do cliente encontrado e o cliente que foi enviado via parâmetro respectivamente.Em seguida, renomeie o método criaAluno() para preencheCliente(), e então, ao invés de criar um cliente, altere as informações do atributo que representa o cliente. Consequentemente esse método não vai mais devolver um Cliente, portanto, mude a assinatura para void
+Dentro do listener do botão salvar. Comente o código que salva, então, adicione o código que edita o cliente. Para a edição, primeiro chame o método preencheCliente() e depois o edita() do DAO, enviando o atributo cliente.
+
+Por fim, chame o método finish() para que o formulário seja fechado e a lista atualizada.
 Agora para finalizar o projeto refatorei o código. 
