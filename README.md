@@ -47,4 +47,23 @@ Para a edição, busque a posição do cliente que foi encontrado, então utiliz
 Dentro do listener do botão salvar. Comente o código que salva, então, adicione o código que edita o cliente. Para a edição, primeiro chame o método preencheCliente() e depois o edita() do DAO, enviando o atributo cliente.
 
 Por fim, chame o método finish() para que o formulário seja fechado e a lista atualizada.
+Ajuste o código para que o cliente seja removido no DAO. Para isso, no DAO, implemente o método remove() que recebe um cliente como parâmetro.
+
+Nesta implementação, busque o cliente por meio do seu id e após garantir que ele existe, remova-o com o método remove() da lista de cliente.
+
+Para testar o código, chame o método remove() do DAO dentro do onItemLongClick() enviando o aluno escolhido. Então, faça o clique longo no cliente, entre no formulário e volte.
+Atualize a lista de clientes logo depois de remover o cliente no DAO. Para isso, extraia uma instância do adaptador para um atributo da ListaClienteActivity. Em seguida, logo depois de remover o aluno no DAO chame o método remove () do adaptador.
+Crie um menu de contexto que apresente a opção de remover o cliente. Para isso, dentro da ListaClientesActivity sobrescreva o método onCreateContextMenu (), então, com o parâmetro ContextMenu, chame o método add (), enviando o título "Remover".
+
+Registar o menu para um ListView por meio do método registerForContextMenu () logo depois de realizar todas as configurações.
+
+Por fim, remova todo o código de configuração do listener de clique longo da ListView.
+Adicione o comportamento que remove o cliente da lista no listener do menu de contexto. Para isso, sobrescreva o método onContextItemSelected(). Dentro dele, busque o aluno que foi tocado a partir do parâmetro MenuItem, com ele é possível acessar o MenuInfo por meio do método getMenuInfo().
+
+Considerando que as informações do menu está relacionado ao AdapterView, converta o MenuInfo via cast para AdapterView.AdapterContextMenuInfo.
+
+Então, com essa nova referência acesse a posição do elemento a partir do atributo position, e então, pegue o cliente a partir do método getItem() do adapter.
+
+Por fim, chame o método remove() enviando o aluno que foi selecionado. Teste o App e veja se a remoção funciona a partir do menu de contexto.
+Aplique um filtro no menu de contexto usando o id como referência. Para isso, no onContextItemSelected(), adicione um if que verifica se o id do item é o mesmo que foi configurado no arquivo estático, então, dentro do escopo do if, adicione o código de remoção para que seja executado somente quando o menu de remover for tocado.
 Agora para finalizar o projeto refatorei o código. 
