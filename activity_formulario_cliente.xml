@@ -1,58 +1,70 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
 
-    android:id="@+id/C"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
 
-    <EditText
-        android:id="@+id/activity_formulario_cliente_nome"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_height="wrap_content"
+    android:layout_width="match_parent">
+
+
+    <LinearLayout
+
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="8dp"
-        android:hint="Nome"
-        android:inputType="textCapWords" />
+        android:orientation="vertical">
 
-    <EditText
-        android:id="@+id/activity_formulario_cliente_telefone"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="8dp"
-        android:hint="Telefone"
-        android:inputType= "phone"/>
+        <EditText
+            android:id="@+id/activity_formulario_cliente_nome"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:hint="@string/nome"
+            android:inputType="textCapWords"
+            android:importantForAutofill="no"
+            tools:targetApi="o"/>
 
-    <EditText
-        android:id="@+id/activity_formulario_cliente_data"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="8dp"
-        android:hint="Data do serviço"
-        android:inputType= "date"/>
+        <EditText
+            android:id="@+id/activity_formulario_cliente_telefone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:hint="@string/telefone"
+            android:inputType="phone"
+            android:importantForAutofill="no"
+            tools:targetApi="o" />
 
-    <EditText
-        android:id="@+id/activity_formulario_cliente_modelo"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="8dp"
-        android:hint="Modelo"
-        android:inputType="textCapWords"/>
+        <EditText
+            android:id="@+id/activity_formulario_cliente_data"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:hint="@string/data_do_serviço"
+            android:inputType="date"
+            android:importantForAutofill="no"
+            tools:targetApi="o"/>
 
-    <EditText
-        android:id="@+id/activity_formulario_cliente_orçamento"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="8dp"
-        android:hint="Orçamento"
-        android:inputType="numberDecimal"/>
+        <EditText
+            android:id="@+id/activity_formulario_cliente_modelo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:hint="@string/modelo"
+            android:inputType="textCapWords"
+            android:importantForAutofill="no"
+            tools:targetApi="o"/>
+
+        <EditText
+            android:id="@+id/activity_formulario_cliente_orçamento"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:hint="@string/Orçamento"
+            android:inputType="numberDecimal"
+            android:importantForAutofill="no"
+            tools:targetApi="o"/>
 
 
-    <Button
-        android:id="@+id/activity_botao_salvar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="8dp"
-        android:text="Salvar"/>
 
 
-</androidx.appcompat.widget.LinearLayoutCompat>
+    </LinearLayout>
+</ScrollView>
